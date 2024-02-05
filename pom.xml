@@ -19,9 +19,9 @@
     <teragrep.jue_01.version>0.0.1-SNAPSHOT</teragrep.jue_01.version>
   </properties>
   <scm>
-    <connection>scm:git:https://github.com/StrongestNumber9/jue_01.git</connection>
-    <developerConnection>scm:git:git@github.com:StrongestNumber9/jue_01.git</developerConnection>
-    <url>https://github.com/StrongestNumber9/jue_01/tree/master</url>
+    <connection>scm:git:https://github.com/teragrep/jue_01.git</connection>
+    <developerConnection>scm:git:git@github.com:teragrep/jue_01.git</developerConnection>
+    <url>https://github.com/teragrep/jue_01/tree/master</url>
   </scm>
   <licenses>
     <license>
@@ -250,7 +250,7 @@
         <repository>
           <id>github</id>
           <name>GitHub Packages</name>
-          <url>https://maven.pkg.github.com/StrongestNumber9/jue_01</url>
+          <url>https://maven.pkg.github.com/teragrep/jue_01</url>
         </repository>
       </distributionManagement>
     </profile>
