@@ -5,7 +5,7 @@
   <packaging>jar</packaging>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jue_01</artifactId>
-  <version>${git.commit.id.describe}</version>
+  <version>${revision}</version>
   <name>jue_01</name>
   <description>jue_01</description>
   <groupId>com.teragrep</groupId>
@@ -14,6 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <revision>0.0.1-SNAPSHOT</revision>
     <java.version>1.8</java.version>
     <junit.jupiter.version>5.7.1</junit.jupiter.version>
   </properties>
@@ -70,8 +71,33 @@
   </dependencies>
   <build>
     <directory>${project.basedir}/target</directory>
-    <finalName>jue_01</finalName>
+    <finalName>jue_01-${git.commit.id.describe}</finalName>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.1.0</version>
+        <configuration>
+          <updatePomFile>true</updatePomFile>
+          <flattenMode>bom</flattenMode>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>pl.project13.maven</groupId>
         <artifactId>git-commit-id-plugin</artifactId>
@@ -79,7 +105,7 @@
         <executions>
           <execution>
             <id>get-the-git-infos</id>
-            <phase>process-resources</phase>
+            <phase>initialize</phase>
             <goals>
               <goal>revision</goal>
             </goals>
@@ -89,7 +115,7 @@
             <goals>
               <goal>validateRevision</goal>
             </goals>
-            <phase>package</phase>
+            <phase>initialize</phase>
           </execution>
         </executions>
         <configuration>
