@@ -5,7 +5,7 @@
   <packaging>jar</packaging>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jue_01</artifactId>
-  <version>${revision}</version>
+  <version>${git.commit.id.describe}</version>
   <name>jue_01</name>
   <description>jue_01</description>
   <groupId>com.teragrep</groupId>
@@ -14,7 +14,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <revision>0.0.1-SNAPSHOT</revision>
     <java.version>1.8</java.version>
     <junit.jupiter.version>5.7.1</junit.jupiter.version>
   </properties>
@@ -71,7 +70,7 @@
   </dependencies>
   <build>
     <directory>${project.basedir}/target</directory>
-    <finalName>jue_01-${git.commit.id.describe}</finalName>
+    <finalName>jue_01</finalName>
     <plugins>
       <plugin>
         <groupId>pl.project13.maven</groupId>
@@ -80,7 +79,7 @@
         <executions>
           <execution>
             <id>get-the-git-infos</id>
-            <phase>initialize</phase>
+            <phase>process-resources</phase>
             <goals>
               <goal>revision</goal>
             </goals>
@@ -90,7 +89,7 @@
             <goals>
               <goal>validateRevision</goal>
             </goals>
-            <phase>initialize</phase>
+            <phase>package</phase>
           </execution>
         </executions>
         <configuration>
